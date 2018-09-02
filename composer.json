@@ -1,0 +1,6 @@
+{
+    "name": "fateblog",
+    "require": {
+        "afuafuyo/fatephp": "^2.1"
+    }
+}

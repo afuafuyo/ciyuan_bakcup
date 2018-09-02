@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>404</title>
+<link href="/dist/pc/css/common.css" rel="stylesheet" />
+<link href="/dist/pc/css/404.css" rel="stylesheet" />
+
+</head>
+<body>
+<div class="y-nav">
+    <div class="y-wrapper y-nav-wrapper">
+        <div class="y-nav-left">
+            <a href="/">首页</a>
+        </div>
+    </div>
+</div>
+<div class="notfound-bg"><span class="notfound-plane">404</span><span onclick="this.style.left=0" class="notfound-bird"></span><span class="notfound-sun"></span></div>
+
+<script>
+function setBg() {
+    var now = new Date().getHours();
+    var body = document.body;
+    var nav = document.querySelector('.y-nav');
+    console.log(now)
+    if(now > 8 && now < 17) {
+        body.style.backgroundColor = '#fff';
+        nav.style.backgroundImage = 'linear-gradient(90deg, #f0d1b0, #fff)';
+    
+    } else if(now >= 16 && now < 20) {
+        body.style.backgroundImage = 'linear-gradient(135deg, #f0d1b0, #fff)';
+        nav.style.backgroundImage = 'linear-gradient(90deg, #f0d1b0, #fff)';
+        
+    } else {
+        body.style.backgroundImage = 'linear-gradient(135deg, #032980, #000)';
+        nav.style.backgroundImage = 'linear-gradient(90deg, #032980, #000)';
+    }
+    
+    body = null;
+    nav = null;
+}
+
+setBg();
+</script>
+</body>
+</html>
