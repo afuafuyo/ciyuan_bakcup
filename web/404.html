@@ -16,7 +16,12 @@
         </div>
     </div>
 </div>
-<div class="notfound-bg"><span class="notfound-plane">404</span><span onclick="this.style.left=0" class="notfound-bird"></span><span class="notfound-sun"></span></div>
+<div class="notfound-bg">
+    <span class="notfound-sun"></span>
+    <span class="notfound-clouds"></span>
+    <span class="notfound-plane">404</span>
+    <span onclick="this.style.left=0" class="notfound-bird"></span>
+</div>
 
 <script>
 function setBg() {
@@ -24,17 +29,17 @@ function setBg() {
     var body = document.body;
     var nav = document.querySelector('.y-nav');
     console.log(now)
-    if(now > 8 && now < 17) {
-        body.style.backgroundColor = '#fff';
-        nav.style.backgroundImage = 'linear-gradient(90deg, #f0d1b0, #fff)';
+    if(now > 8 && now < 16) {
+        body.style.backgroundImage = 'linear-gradient(180deg, #0d68bc, #89b5de 40%, #fff 70%)';
+        nav.style.backgroundImage = 'linear-gradient(90deg, #fff, #0d68bc)';
     
     } else if(now >= 16 && now < 20) {
         body.style.backgroundImage = 'linear-gradient(135deg, #f0d1b0, #fff)';
         nav.style.backgroundImage = 'linear-gradient(90deg, #f0d1b0, #fff)';
         
     } else {
-        body.style.backgroundImage = 'linear-gradient(135deg, #032980, #000)';
-        nav.style.backgroundImage = 'linear-gradient(90deg, #032980, #000)';
+        body.style.backgroundImage = 'linear-gradient(135deg, #3e79ff, #000)';
+        nav.style.backgroundImage = 'linear-gradient(90deg, #3e79ff, #000)';
     }
     
     body = null;

@@ -7,7 +7,8 @@ define('RES', 'http://localhost/fateblog-share/web/dist');
 
 $_G = [];
 $_G['seo'] = [
-    'title' => '番薯社',
+    'sitetitle' => '番薯社',
+    'navtitle' => '番薯社',
     'keywords' => '新番 动画 动漫',
     'desc' => '番薯社 用心撰写二次元点滴',
     'generator' => '番薯社',
@@ -60,7 +61,7 @@ $res = (new fate\web\Application([
     
     'id' => 1,
     'appPath' => __DIR__ . '/../../fateblog-share/app',
-    'errorHandler' => 'app\controllers\ErrorPage',
+    //'errorHandler' => 'app\controllers\ErrorPage',
     'routesMap' => [
         'anime' => [
             'classPath' => 'app\controllers\classify\IndexController',
