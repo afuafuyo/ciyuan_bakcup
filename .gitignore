@@ -3,4 +3,5 @@ vendor
 node_modules
 package-lock.json
 dist
+public
 composer.lock
