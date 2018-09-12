@@ -31,7 +31,7 @@ DROP TABLE IF EXISTS `t_admin`;
 
 CREATE TABLE `t_admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) DEFAULT '',
+  `name` varchar(20) CHARACTER SET utf8 DEFAULT '',
   `pwd` char(32) DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -42,8 +42,8 @@ DROP TABLE IF EXISTS `t_links`;
 
 CREATE TABLE `t_links` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(20) NOT NULL DEFAULT '',
-  `link` varchar(100) NOT NULL DEFAULT '',
+  `title` varchar(20) CHARACTER SET utf8 DEFAULT '',
+  `link` varchar(100) CHARACTER SET utf8 DEFAULT '',
   `add_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -117,8 +117,8 @@ DROP TABLE IF EXISTS `t_tips`;
 
 CREATE TABLE `t_tips` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(60) NOT NULL DEFAULT '',
-  `intro` varchar(400) NOT NULL DEFAULT '',
+  `title` varchar(60) CHARACTER SET utf8 DEFAULT '',
+  `intro` varchar(400) CHARACTER SET utf8 DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
