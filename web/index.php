@@ -15,6 +15,9 @@ $_G['seo'] = [
     'author' => '番薯社',
     'copyright' => '番薯社'
 ];
+$_G['footer'] = [
+    'about' => '<p>Powered by <a href="https://gitee.com/tailipu/fateblog" target="_blank">fateblog</a></p>'
+];
 $_G['nowTime'] = isset($_SERVER['REQUEST_TIME']) ? $_SERVER['REQUEST_TIME'] : time();
 $_G['theme'] = 'y-theme-afternoon';
 
@@ -55,6 +58,15 @@ $res = (new fate\web\Application([
             'password' => 'root',
             'charset' => 'utf8'
         ]
+    ],
+    'mail' => [
+        'safecode' => '_fs_',
+        'host' => 'smtp.126.com',
+        'port' => '25',
+        'username' => 'devemail@126.com',
+        'password' => '_devemail',
+        'sender_email' => 'devemail@126.com',
+        'sender_name' => '番薯社'
     ]
 ]))->run();
 
