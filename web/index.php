@@ -64,7 +64,7 @@ $res = (new fate\web\Application([
         'host' => 'smtp.126.com',
         'port' => '25',
         'username' => 'devemail@126.com',
-        'password' => '_devemail',
+        'password' => '_',
         'sender_email' => 'devemail@126.com',
         'sender_name' => '番薯社'
     ]
