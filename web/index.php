@@ -7,16 +7,16 @@ define('RES', 'http://localhost/fateblog-share/web/dist');
 
 $_G = [];
 $_G['seo'] = [
-    'sitetitle' => '番薯社',
+    'sitetitle' => '番薯社 - (F) - 二次元图鉴',
     'navtitle' => '番薯社',
-    'keywords' => '新番 动画 动漫',
-    'desc' => '番薯社 用心撰写二次元点滴',
+    'keywords' => '二次元 动画 动漫 游戏 图鉴 电视动画 动画电影 剧场版动画',
+    'desc' => 'F站 番薯社 用心撰写最新最特别的次元世界',
     'generator' => '番薯社',
     'author' => '番薯社',
     'copyright' => '番薯社'
 ];
 $_G['footer'] = [
-    'about' => '<p>Powered by <a href="https://gitee.com/tailipu/fateblog" target="_blank">fateblog</a></p>'
+    'about' => ''
 ];
 $_G['nowTime'] = isset($_SERVER['REQUEST_TIME']) ? $_SERVER['REQUEST_TIME'] : time();
 $_G['theme'] = 'y-theme-afternoon';
