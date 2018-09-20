@@ -50,6 +50,7 @@ $res = (new fate\web\Application([
     ],
     'modules' => [
         'admin' => 'app\\modules\\admin',
+        'bbs' => 'app\\modules\\bbs'
     ],
     'db' => [
         'main' => [
