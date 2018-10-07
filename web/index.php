@@ -16,7 +16,8 @@ $_G['seo'] = [
     'copyright' => '番薯社'
 ];
 $_G['footer'] = [
-    'about' => ''
+    'qq' => '531251662',
+    'about' => '<p>本站为非盈利个人博客，不提供任何上传下载服务，所有内容均来自网络公开分享或网友的投稿。</p><p>如果您发现本站某些文章资源或图片违规或侵犯了您的权益，请发送消息到下面邮箱</p><p>531251662#qq.com</p>'
 ];
 $_G['nowTime'] = isset($_SERVER['REQUEST_TIME']) ? $_SERVER['REQUEST_TIME'] : time();
 $_G['theme'] = 'y-theme-afternoon';
