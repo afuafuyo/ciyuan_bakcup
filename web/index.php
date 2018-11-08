@@ -30,7 +30,7 @@ $_G['isMobile'] = (strpos($agent, 'iPhone') || strpos($agent, 'Android')) ? true
 
 $res = (new fate\web\Application([
     // 加密用
-    'securityKey' => 'AsdF_',
+    'securityKey' => '_',
     
     'id' => 1,
     'appPath' => __DIR__ . '/../../fateblog-share/app',
