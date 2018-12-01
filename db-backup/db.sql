@@ -48,6 +48,7 @@ CREATE TABLE `t_imgs` (
   `thumb` varchar(200) NOT NULL DEFAULT '',
   `content` text,
   `status` tinyint(4) NOT NULL DEFAULT '1',
+  `views` int(11) NOT NULL DEFAULT '1',
   `post_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
