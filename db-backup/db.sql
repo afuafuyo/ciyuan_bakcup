@@ -45,6 +45,7 @@ CREATE TABLE `t_imgs` (
   `title` varchar(60) NOT NULL DEFAULT '',
   `tags` varchar(100) NOT NULL DEFAULT '',
   `brief` varchar(200) NOT NULL DEFAULT '',
+  `thumb` varchar(200) NOT NULL DEFAULT '',
   `content` text,
   `post_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
