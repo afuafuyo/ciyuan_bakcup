@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: 2018-11-06 20:32:40
+-- 主机： localhost:3306
+-- 生成日期： 2018-12-01 12:52:49
 -- 服务器版本： 10.1.36-MariaDB-cll-lve
--- PHP Version: 5.6.30
+-- PHP 版本： 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,23 +19,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `funsillc_fateblog`
+-- 数据库： `funsillc_fateblog`
 --
-
--- --------------------------------------------------------
-
---
--- 表的结构 `t_ad`
---
-
-CREATE TABLE `t_ad` (
-  `id` int(11) NOT NULL,
-  `title` varchar(100) CHARACTER SET utf8 DEFAULT '',
-  `pic` varchar(100) CHARACTER SET utf8 DEFAULT '',
-  `link` varchar(100) CHARACTER SET utf8 DEFAULT '',
-  `expires` int(11) DEFAULT '0' COMMENT '过期时间',
-  `post_time` int(11) DEFAULT '0' COMMENT '发布时间'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 转存表中的数据 `t_ad`
@@ -45,53 +30,12 @@ INSERT INTO `t_ad` (`id`, `title`, `pic`, `link`, `expires`, `post_time`) VALUES
 (1, '声之形', '/upload/201808/koenokatachi3.jpg', '/posts?id=8', 1553794452, 1533784505),
 (2, 'Fate/stay night', '/upload/201808/fate-saber1.jpg', '/posts?id=10', 1553794452, 1533885505);
 
--- --------------------------------------------------------
-
---
--- 表的结构 `t_admin`
---
-
-CREATE TABLE `t_admin` (
-  `id` int(11) NOT NULL,
-  `name` varchar(20) DEFAULT '',
-  `pwd` char(32) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- 转存表中的数据 `t_admin`
 --
 
 INSERT INTO `t_admin` (`id`, `name`, `pwd`) VALUES
 (1, 'admin', 'c8511d769ed67c8d40efa5ba529dd832');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `t_links`
---
-
-CREATE TABLE `t_links` (
-  `id` int(11) NOT NULL,
-  `title` varchar(20) NOT NULL DEFAULT '',
-  `link` varchar(100) NOT NULL DEFAULT '',
-  `add_time` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `t_nav`
---
-
-CREATE TABLE `t_nav` (
-  `id` int(11) NOT NULL,
-  `pid` int(11) NOT NULL DEFAULT '0',
-  `title` varchar(40) CHARACTER SET utf8 DEFAULT '',
-  `navurl` varchar(100) CHARACTER SET utf8 DEFAULT '',
-  `isshow` tinyint(4) NOT NULL DEFAULT '1',
-  `listorder` int(11) NOT NULL DEFAULT '0',
-  `linktype` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1 本站链接 2 站外链接'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 转存表中的数据 `t_nav`
@@ -103,70 +47,31 @@ INSERT INTO `t_nav` (`id`, `pid`, `title`, `navurl`, `isshow`, `listorder`, `lin
 (3, 0, '周边衍生', 'around', 1, 0, 1),
 (4, 0, '杂谈', 'news', 1, 0, 1);
 
--- --------------------------------------------------------
-
---
--- 表的结构 `t_post`
---
-
-CREATE TABLE `t_post` (
-  `id` int(11) NOT NULL,
-  `uid` int(11) DEFAULT '0',
-  `nav_id` int(11) NOT NULL DEFAULT '0' COMMENT '所属栏目',
-  `is_recommend` tinyint(4) DEFAULT '0',
-  `list_style` tinyint(4) DEFAULT '1' COMMENT '列表样式 1 小图 2 大图',
-  `title` varchar(60) CHARACTER SET utf8 DEFAULT '',
-  `author` varchar(20) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `tags` varchar(60) CHARACTER SET utf8 DEFAULT '',
-  `thumb` varchar(200) CHARACTER SET utf8 DEFAULT '',
-  `brief` varchar(200) CHARACTER SET utf8 DEFAULT '',
-  `views` int(11) DEFAULT '1',
-  `post_time` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- 转存表中的数据 `t_post`
 --
 
 INSERT INTO `t_post` (`id`, `uid`, `nav_id`, `is_recommend`, `list_style`, `title`, `author`, `tags`, `thumb`, `brief`, `views`, `post_time`) VALUES
-(1, 1, 1, 0, 2, '动漫：《噬血狂袭》', '月十', '动漫', '/upload/201808/shixuekx.jpg', '《噬血狂袭》，简称“血袭”（ストブラ），为三云岳斗所创作，麻喵子负责插画的日本轻小说。经由电击文库自 2011 年 5 月起出版发行。', 32, 1464533773),
-(2, 1, 1, 1, 2, '动漫：《白色相簿 2 》', '月十', '动漫', '/upload/201808/whitealbum2.jpg', '由游戏改编的动漫一向比较好看，这里推荐一部《白色相簿 2》。小编感觉这部动漫从人物塑造，画风到剧情都还不错。白色相簿系列发行了游戏、漫画、动画、小说、周边等，可以说很成功了。', 38, 1464667800),
-(3, 1, 1, 1, 2, '动漫：《樱花庄的宠物女孩》', '月十', '动漫', '/upload/201808/sakurasou.jpg', '《樱花庄的宠物女孩》（日文：さくら荘のペットな彼女）是轻小说家鸭志田一著作，插画家沟口凯吉负责插画，电击文库 （ 隶属 MediaWorks ） 所属的轻小说', 10, 1464754200),
-(4, 1, 1, 1, 2, '动漫：《灰色的果实》', '月十', '动漫|灰色三部曲', '/upload/201808/grisaia.jpg', '《灰色的果实》是灰色三部曲《灰色的果实》，《灰色的迷宫》，《灰色的乐园》的第一部，是日本游戏开发商 FrontWing 开发的一款成人向游戏，于 2011 年 2 月 25 日发售', 27, 1465543626),
-(5, 1, 1, 1, 2, '动漫：《染红的街道》', '月十', '动漫|空之三部曲', '/upload/201808/qihongdejiedao.jpg', '《染红的街道》（日语：あかね色に染まる坂）是由 feng 制作的一部游戏。', 8, 1468209600),
-(6, 1, 2, 1, 2, '游戏：病娇模拟器', '月十', '游戏', '/upload/201808/bingjiaomoniqi.jpg', '病娇模拟器，原名 Yandere Simulator ，这款游戏是一个自由度超高的个人项目，目前还没有开发完成，可以下载调试版试玩。', 27, 1486872000),
-(7, 1, 1, 1, 1, '动画电影：《借东西的小人阿莉埃蒂》', '月十', '动漫|动画电影', '/upload/201808/jiewuxiaoren.jpg', '动漫改编自英国作家玛丽·诺顿的小说作品，讲述生活在郊外房子地板下身长 10 厘米的 14 岁少女，与来此疗养的少年相识的故事。', 84, 1489312817),
-(8, 1, 1, 1, 2, '动画电影：《声之形》', '月十', '动漫|动画电影', '/upload/201808/koenokatachi3.jpg', '《声之形》（日语：映画 聲の形）是由京都动画制作的一部动画电影，根据大今良时的漫画《声之形》改编。于 2016 年 9 月 17 日在日本上映。', 21, 1503918000),
-(9, 1, 1, 1, 2, '动画电影：《你的名字。》', '月十', '新海诚|动画电影', '/upload/201808/yourname2.jpg', '《你的名字。》（日语：君の名は。）是由新海诚导演的， CoMix Wave Films 制作的动画电影。并有小说、漫画等衍生作品。', 33, 1504263600),
-(10, 1, 2, 1, 2, '游戏： Fate/stay night', '月十', 'fate', '/upload/201808/fate.jpg', '《Fate / stay night》（日语：フェイト/ステイナイト)，简称 stay night ，是由 TYPE-MOON 于 2004 年 1 月 30 日发售的 PC 平台文字冒险游戏。', 73, 1505127600),
-(11, 1, 1, 1, 2, '动画电影：《大鱼海棠》', '月十', '动漫|动画电影', '/upload/201808/dayuhaitang.jpg', '《大鱼海棠》于 2016-07-08 上映，单从电影的构思，引入了平行世界观，有了其他种族和人类的互动，定位已经不再是老少咸宜了，主打成人市场，可以说在国产动画里很创新了。', 35, 1506855600),
-(12, 1, 1, 1, 2, '动漫：《工作细胞》', '月十', '动漫', '/upload/201808/gongzuoxibao.jpg', '《工作细胞》（日语：はたらく細胞）是由日本漫画家清水茜于漫画杂志《月刊少年天狼星》（月刊少年シリウス）上连载的一部细胞拟人漫画。后由 david production 改编成电视动画。', 31, 1535628948),
-(13, 1, 1, 1, 2, '《Fate / stay night》电视动画及剧场版简介', '月十', 'fate', '/upload/201809/fate.jpg', '《 Fate/stay night 》（日语：フェイト/ステイナイト)，简称 stay night ，是由 TYPE-MOON 于 2004 年 1 月 30 日发售的 PC 平台文字冒险游戏/视觉小说。游戏一共三条线路： Fate 、Unlimited Blade Works 、Heaven\'s Feel ，分别对应 Saber 、远坂凛、间桐樱三位女主角。', 58, 1535788759),
-(14, 1, 1, 1, 2, '动画电影：《红辣椒》', '月十', '今敏', '/upload/201809/YVibJZ20180912055736.jpg', '《 Paprika 》（中文：红辣椒 或 盗梦侦探）是日本著名动画导演今敏所导的动画电影。于 2006 年 9 月在威尼斯国际电影节首映， 2006 年 11 月 25 日在日本放映。', 18, 1536732003),
-(15, 1, 2, 0, 1, '看懂游戏分级制度', '月十', '游戏', '/upload/201809/gsrr.png', '游戏分级是一种用于分别视频游戏对各年龄人士的合适度的分级。大部份分级系统都是由政府资助非营利性组织。大部分国家都会对视频游戏做内容分级。', 14, 1537262750),
-(16, 1, 1, 1, 2, 'fate 美食番《卫宫家今天的饭》', '月十', 'fate', '/upload/201809/weigongfan.jpg', '《卫宫家今天的饭》(日语：衛宮さんちの今日のごはん)是漫画家 TAa 的漫画作品。后由 ufotable 将其改变为电视动画。营造了一个温柔的世界观', 24, 1538308401),
-(17, 1, 3, 0, 2, '《约会大作战》狂三，富士见周年纪念手办', '月十', '手办', 'http://wx3.sinaimg.cn/mw690/77719d27ly1fvzsypenf7j20go0m8n0f.jpg', 'KADOKAWA 作品《约会大作战》中主角之一「時崎狂三」，在富士见文库 （日文：ファンタジア文庫） 30 周年纪念之际，按照 1:7 比例手办化', 8, 1538908287),
-(18, 1, 1, 1, 2, '动漫：《秒速五厘米》', '月十', '新海诚', '/upload/201810/miaosu.jpg', '《秒速5厘米》（日语：秒速びょうそく5センチメートル）是由新海诚创作和制作的一部动画电影，于 2007 年 3 月 3 日在日本上映，并有小说、漫画等衍生作品。', 16, 1539341984),
-(19, 1, 1, 1, 2, 'TV 动画：她和她的猫', '月十', '新海诚', '/upload/201810/hercat.jpg', '《她和她的猫》（日语：彼女と彼女の猫）原本是由新海诚自主制作的 5 分钟黑白动画。2016 Lidenfilms 将原动画重新制作，内容相当于原黑白动画之前的故事。', 14, 1540982167);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `t_post_comment`
---
-
-CREATE TABLE `t_post_comment` (
-  `id` int(11) NOT NULL,
-  `pid` int(11) NOT NULL DEFAULT '0',
-  `post_id` int(11) NOT NULL DEFAULT '0' COMMENT '评论那篇文章',
-  `nickname` varchar(60) CHARACTER SET utf8 DEFAULT '',
-  `email` varchar(60) CHARACTER SET utf8 DEFAULT '',
-  `ip` varchar(60) DEFAULT '',
-  `content` varchar(200) CHARACTER SET utf8 DEFAULT '',
-  `status` tinyint(4) NOT NULL DEFAULT '1',
-  `client_type` tinyint(4) DEFAULT '0',
-  `post_time` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(1, 1, 1, 0, 2, '动漫：《噬血狂袭》', '月十', '动漫', '/upload/201808/shixuekx.jpg', '《噬血狂袭》，简称“血袭”（ストブラ），为三云岳斗所创作，麻喵子负责插画的日本轻小说。经由电击文库自 2011 年 5 月起出版发行。', 60, 1464533773),
+(2, 1, 1, 1, 2, '动漫：《白色相簿 2 》', '月十', '动漫', '/upload/201808/whitealbum2.jpg', '由游戏改编的动漫一向比较好看，这里推荐一部《白色相簿 2》。小编感觉这部动漫从人物塑造，画风到剧情都还不错。白色相簿系列发行了游戏、漫画、动画、小说、周边等，可以说很成功了。', 66, 1464667800),
+(3, 1, 1, 1, 2, '动漫：《樱花庄的宠物女孩》', '月十', '动漫', '/upload/201808/sakurasou.jpg', '《樱花庄的宠物女孩》（日文：さくら荘のペットな彼女）是轻小说家鸭志田一著作，插画家沟口凯吉负责插画，电击文库 （ 隶属 MediaWorks ） 所属的轻小说', 34, 1464754200),
+(4, 1, 1, 1, 2, '动漫：《灰色的果实》', '月十', '动漫|灰色三部曲', '/upload/201808/grisaia.jpg', '《灰色的果实》是灰色三部曲《灰色的果实》，《灰色的迷宫》，《灰色的乐园》的第一部，是日本游戏开发商 FrontWing 开发的一款成人向游戏，于 2011 年 2 月 25 日发售', 66, 1465543626),
+(5, 1, 1, 1, 2, '动漫：《染红的街道》', '月十', '动漫|空之三部曲', '/upload/201808/qihongdejiedao.jpg', '《染红的街道》（日语：あかね色に染まる坂）是由 feng 制作的一部游戏。', 35, 1468209600),
+(6, 1, 2, 1, 2, '游戏：病娇模拟器', '月十', '游戏', '/upload/201808/bingjiaomoniqi.jpg', '病娇模拟器，原名 Yandere Simulator ，这款游戏是一个自由度超高的个人项目，目前还没有开发完成，可以下载调试版试玩。', 53, 1486872000),
+(7, 1, 1, 1, 1, '动画电影：《借东西的小人阿莉埃蒂》', '月十', '动漫|动画电影', '/upload/201808/jiewuxiaoren.jpg', '动漫改编自英国作家玛丽·诺顿的小说作品，讲述生活在郊外房子地板下身长 10 厘米的 14 岁少女，与来此疗养的少年相识的故事。', 125, 1489312817),
+(8, 1, 1, 1, 2, '动画电影：《声之形》', '月十', '动漫|动画电影', '/upload/201808/koenokatachi3.jpg', '《声之形》（日语：映画 聲の形）是由京都动画制作的一部动画电影，根据大今良时的漫画《声之形》改编。于 2016 年 9 月 17 日在日本上映。', 58, 1503918000),
+(9, 1, 1, 1, 2, '动画电影：《你的名字。》', '月十', '新海诚|动画电影', '/upload/201808/yourname2.jpg', '《你的名字。》（日语：君の名は。）是由新海诚导演的， CoMix Wave Films 制作的动画电影。并有小说、漫画等衍生作品。', 59, 1504263600),
+(10, 1, 2, 1, 2, '游戏： Fate/stay night', '月十', 'fate', '/upload/201808/fate.jpg', '《Fate / stay night》（日语：フェイト/ステイナイト)，简称 stay night ，是由 TYPE-MOON 于 2004 年 1 月 30 日发售的 PC 平台文字冒险游戏。', 103, 1505127600),
+(11, 1, 1, 1, 2, '动画电影：《大鱼海棠》', '月十', '动漫|动画电影', '/upload/201808/dayuhaitang.jpg', '《大鱼海棠》于 2016-07-08 上映，单从电影的构思，引入了平行世界观，有了其他种族和人类的互动，定位已经不再是老少咸宜了，主打成人市场，可以说在国产动画里很创新了。', 64, 1506855600),
+(12, 1, 1, 1, 2, '动漫：《工作细胞》', '月十', '动漫', '/upload/201808/gongzuoxibao.jpg', '《工作细胞》（日语：はたらく細胞）是由日本漫画家清水茜于漫画杂志《月刊少年天狼星》（月刊少年シリウス）上连载的一部细胞拟人漫画。后由 david production 改编成电视动画。', 79, 1535628948),
+(13, 1, 1, 1, 2, '《Fate / stay night》电视动画及剧场版简介', '月十', 'fate', '/upload/201809/fate.jpg', '《 Fate/stay night 》（日语：フェイト/ステイナイト)，简称 stay night ，是由 TYPE-MOON 于 2004 年 1 月 30 日发售的 PC 平台文字冒险游戏/视觉小说。游戏一共三条线路： Fate 、Unlimited Blade Works 、Heaven\'s Feel ，分别对应 Saber 、远坂凛、间桐樱三位女主角。', 93, 1535788759),
+(14, 1, 1, 1, 2, '动画电影：《红辣椒》', '月十', '今敏', '/upload/201809/YVibJZ20180912055736.jpg', '《 Paprika 》（中文：红辣椒 或 盗梦侦探）是日本著名动画导演今敏所导的动画电影。于 2006 年 9 月在威尼斯国际电影节首映， 2006 年 11 月 25 日在日本放映。', 48, 1536732003),
+(15, 1, 2, 0, 1, '看懂游戏分级制度', '月十', '游戏', '/upload/201809/gsrr.png', '游戏分级是一种用于分别视频游戏对各年龄人士的合适度的分级。大部份分级系统都是由政府资助非营利性组织。大部分国家都会对视频游戏做内容分级。', 38, 1537262750),
+(16, 1, 1, 1, 2, 'fate 美食番《卫宫家今天的饭》', '月十', 'fate', '/upload/201809/weigongfan.jpg', '《卫宫家今天的饭》(日语：衛宮さんちの今日のごはん)是漫画家 TAa 的漫画作品。后由 ufotable 将其改变为电视动画。营造了一个温柔的世界观', 63, 1538308401),
+(17, 1, 3, 0, 2, '《约会大作战》狂三，富士见周年纪念手办', '月十', '手办', 'http://wx3.sinaimg.cn/mw690/77719d27ly1fvzsypenf7j20go0m8n0f.jpg', 'KADOKAWA 作品《约会大作战》中主角之一「時崎狂三」，在富士见文库 （日文：ファンタジア文庫） 30 周年纪念之际，按照 1:7 比例手办化', 40, 1538908287),
+(18, 1, 1, 1, 2, '动漫：《秒速五厘米》', '月十', '新海诚', '/upload/201810/miaosu.jpg', '《秒速5厘米》（日语：秒速びょうそく5センチメートル）是由新海诚创作和制作的一部动画电影，于 2007 年 3 月 3 日在日本上映，并有小说、漫画等衍生作品。', 51, 1539341984),
+(19, 1, 1, 1, 2, 'TV 动画：她和她的猫', '月十', '新海诚', '/upload/201810/hercat.jpg', '《她和她的猫》（日语：彼女と彼女の猫）原本是由新海诚自主制作的 5 分钟黑白动画。2016 Lidenfilms 将原动画重新制作，内容相当于原黑白动画之前的故事。', 43, 1540982167),
+(20, 1, 1, 1, 2, '动漫：《齐木楠雄的灾难》', '月十', '动漫', '/upload/201811/zhaoqiaoxinmei.jpg', '齐木楠雄，本作的主角，是一个超能力者。生来就拥有着让世人羡慕的超能力才能，但是他本人认为这种可以做到任何事情的能力是个灾难，是引来不幸的元凶。齐木楠雄羡慕正常人的生活，因此会在他人面前隐藏这股力量，打算过着不起眼、不与人有所牵扯的生活。但不知道为什么，某些有隐情的同学就是会跑来纠缠他。', 5, 1543234681);
 
 --
 -- 转存表中的数据 `t_post_comment`
@@ -174,18 +79,6 @@ CREATE TABLE `t_post_comment` (
 
 INSERT INTO `t_post_comment` (`id`, `pid`, `post_id`, `nickname`, `email`, `ip`, `content`, `status`, `client_type`, `post_time`) VALUES
 (1, 0, 13, '阿福', 'yulifu@douyu.tv', '36.110.77.218', '嗯', 1, 0, 1536644205);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `t_post_content`
---
-
-CREATE TABLE `t_post_content` (
-  `id` int(11) NOT NULL,
-  `post_id` int(11) DEFAULT '0',
-  `content` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 转存表中的数据 `t_post_content`
@@ -210,19 +103,8 @@ INSERT INTO `t_post_content` (`id`, `post_id`, `content`) VALUES
 (16, 16, '<p>《卫宫家今天的饭》（日语：衛宮さんちの今日のごはん）是漫画家 TAa 的漫画作品。后由 ufotable 将其改变为电视动画。<br></p><p>「Fate」×「料理」＝「温柔」<br></p><p>不同于 Fate 系列紧张刺激的打斗场面，《卫宫家今天的饭》营造了一个温柔的世界观，不管春秋冬夏，卫宫士郎家都会端出美味的料理，冬木的居民和从者们沉浸在美食带来的温馨气氛中，身周不经意便萦绕出满足的光晕。<br></p><p>整个作品都是祥和的氛围， master 和 servant 和平共处，没有战争，有的只是美食，很治愈系。<br></p><p>相比于其他美食番来说，《卫宫家今天的饭》中的美食就比较真实了，里面附有详细的食谱和做法，这些食谱都是可以在现实中做成成品的。想试试吗？<br></p><p><img src=\"/upload/201809/weigongfan.jpg\"></p><p><br></p><p><b>衍生动画</b><br></p><p><mark data-id=\"11\">ufotable</mark> 在 2017 年将漫画作品改编成了同名电视动画，并从 2018 年 2 月开始，每月 1 日在 <mark data-id=\"12\">AbemaTV</mark> 播送。可以说这是一部很任性的月番，根本不够看。</p><p><img src=\"/upload/201809/weigongfan2.jpg\"></p><p><br></p><p>参考</p><blockquote><p>漫画信息 - https://web-ace.jp/youngaceup/contents/1000010/</p><p>动画官网 - https://emiya-gohan.com</p></blockquote>'),
 (17, 17, '<p>KADOKAWA 作品《约会大作战》中主角之一的「時崎狂三」，在<mark data-id=\"13\">富士见文库</mark> （日文：ファンタジア文庫） 30 周年纪念之际，按照 1:7 比例手办化，手办按照原作第 11 集的插图，在 5 年前的世界与主角‧五河士道相遇的狂三制作而成。</p><p>细细看来，被微风吹拂的头发、飘扬的裙子以及颇具神秘之处的眼罩，整体皆以高品质制作呈现。除此之外，脸部部件是可拆卸的，可以看到「无眼罩」的狂三样貌。</p><p><img src=\"http://wx3.sinaimg.cn/mw690/77719d27ly1fvzsypenf7j20go0m8n0f.jpg\"></p><p>商品信息</p><p>名称：时崎狂三 Fantasia30 周年记念 Ver.</p><p>出自作品：约会大作战 DATE A LIVE</p><p>制造商：&nbsp;KADOKAWA</p><p>分类：&nbsp;1/7 比例模型</p><p>价格：&nbsp;14,352 日圆 + 消费税</p><p>商品规格： PVC 制涂装完成品・ 1/7 比例模型・附专用台座・全高：约 250mm</p><p>贩卖商：&nbsp;<span style=\"color: rgb(87, 79, 75); font-family: メイリオ, Meiryo, Arial, &quot;ＭＳ Ｐゴシック&quot;, &quot;MS PGothic&quot;, &quot;ヒラギノ角ゴ Pro W3&quot;, &quot;Hiragino Kaku Gothic Pro&quot;, osaka, sans-serif; font-size: 13px; letter-spacing: normal;\">Good Smile Company</span></p><p><span style=\"color: rgb(87, 79, 75); font-family: メイリオ, Meiryo, Arial, &quot;ＭＳ Ｐゴシック&quot;, &quot;MS PGothic&quot;, &quot;ヒラギノ角ゴ Pro W3&quot;, &quot;Hiragino Kaku Gothic Pro&quot;, osaka, sans-serif; font-size: 13px; letter-spacing: normal;\"><br></span></p><p><font color=\"#574f4b\" face=\"メイリオ, Meiryo, Arial, ＭＳ Ｐゴシック, MS PGothic, ヒラギノ角ゴ Pro W3, Hiragino Kaku Gothic Pro, osaka, sans-serif\"><span style=\"font-size: 13px; letter-spacing: normal;\">摘除眼罩</span></font></p><p><img src=\"http://wx2.sinaimg.cn/mw690/77719d27ly1fvzszotnvfj20go0m80wi.jpg\"></p><p>背面</p><p><img src=\"http://wx4.sinaimg.cn/mw690/77719d27ly1fvzsysjrhvj20go0m841x.jpg\"></p><p>侧面</p><p><img src=\"http://wx1.sinaimg.cn/mw690/77719d27ly1fvzsywrkx0j20fa0m8n00.jpg\"></p><p><br></p><blockquote><p>正版出售地址 - <a target=\"_blank\" href=\"http://www.goodsmile.info/ja/product/7602/%E6%99%82%E5%B4%8E+%E7%8B%82%E4%B8%89+%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%82%A230%E5%91%A8%E5%B9%B4%E8%A8%98%E5%BF%B5Ver.html\">http://www.goodsmile.info/ja/product/7602/%E6%99%82%E5%B4%8E+%E7%8B%82%E4%B8%89+%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%82%A230%E5%91%A8%E5%B9%B4%E8%A8%98%E5%BF%B5Ver.html</a></p><p>富士见书房 - <a target=\"_blank\" href=\"http://www.fujimishobo.co.jp\">http://www.fujimishobo.co.jp</a></p></blockquote>'),
 (18, 18, '<p>「如果樱花掉落的速度是每秒 5 厘米，那么两颗心需要多久才能靠近？」<br></p><p>《秒速5厘米》（日语：秒速びょうそく5センチメートル）是由新海诚创作和制作的一部动画电影，于 2007 年 3 月 3 日在日本上映，并有小说、漫画等衍生作品。<br></p><p>新海诚的作品一向多幻想及科幻元素，但本部作品则偏重写实，用动画的方式描写了从 1990 年代至今的日本，动画中也运用了不少实景素材。<br></p><p data-role=\"danger\">以下内容涉及剧透成分</p><p><img src=\"/upload/201810/miaosu2.jpg\"></p><p>影片讲述了原本为同班同学的远野贵树与筱原明里从小学毕业之后，两人因搬家天各一方不能见面。分隔两地的两人靠着书信往来保持联络，直到贵树得知即将跟随家人搬到距离明里更远的鹿儿岛时，两人约定再见一面。原本万事俱备，但当天却遇上了暴风雪。云收天转，时光推移，贵树与明里各自有了新的生活，但对彼此的思念，一直留在心中。<br></p><p>整个作品被分为三部分短篇：樱花抄、宇航员、秒速五厘米。</p><p>樱花抄篇讲述了远野贵树与筱原明里小学时期相遇、相知，懵懂爱情的产生到由于家人搬家缘故不得不分开的故事。</p><p>宇航员篇通过默默喜欢远野贵树的澄田花苗的视角讲述了中学时期的远野贵树的生活。</p><p>秒速五厘米篇讲述了远野贵树与筱原明里长大成人各自过着新生活，在一个樱花盛开的季节，两人在铁道口偶遇，由于火车阻挡，错过相认留有遗憾的结局故事。</p><p>影片并没有给出一个美好的结局，带有淡淡的忧伤，但并不影响它带来的感动。美妙的配乐、细腻的画面、青涩的初恋，带有遗憾的结局。。。多数人或多或少会从中发现自己的影子，青春，不就是这样子吗？<br></p><p><img src=\"/upload/201810/miaosu1.jpg\"></p><p>聚散苦匆匆，此恨无穷。今年花胜去年红。可惜明年花更好，知与谁同？<br></p><p><br></p><blockquote><p>电影官方网站 - http://www.cwfilms.jp/5cm</p></blockquote>'),
-(19, 19, '<p>《她和她的猫》（日语：彼女と彼女の猫）原本是由新海诚自主制作的 5 分钟黑白动画。<br></p><p><b>TV 动画</b><br></p><p>2016 Lidenfilms 将原动画重新制作，内容相当于原黑白动画之前的故事。并于 2016 年 3 月 4 日 ~ 25 日在 TOKYO MX 等媒体播送，每话时长约 8 分钟，全 4 话。</p><p><img src=\"/upload/201810/hercat.jpg\"></p><p data-role=\"danger\">以下内容含有剧透成分</p><p>她一直很孤单，从小失去父亲，为了不给母亲添麻烦选择了出去租住。合租室友突然搬走，她开始一个人生活。每个清晨独自走出家门，独自上学，独自放学，独自在公园的秋千上发呆。街道上三五成群的小孩追逐嬉戏，伴着笑声穿过她身旁，一切似乎与她无关。<br></p><p><img src=\"/upload/201810/hercat3.jpg\"></p><p>它是一只黑色的小流浪猫，被她的母亲领养回家，送给她。最初她并不喜欢它，甚至想把它丢弃，但最后没能狠下心。由于它，她也交到了朋友。它很喜欢她，熟悉她的味道，喜欢依偎在她身旁睡觉，它会用自己的方式为她加油鼓气，但往往弄巧成拙。<br></p><p>时间流逝，它变成了大猫，她也毕业开始寻找工作，虽然尽力争取每一个岗位，但一切并不如意，四处碰壁的失落感，只能化为夜深人静中孤单无助的抽泣，它是她唯一的陪伴和慰藉。<br></p><p>光阴荏苒，成为猫爷爷的它在她怀里去世了。她又变得孤单一人，夜深人静的晚上会梦到它而惊醒。它虽然去世了，但仍留有她的记忆，依然熟悉她的味道。<br></p><p><img src=\"/upload/201810/hercat4.jpg\"></p><p>雨天的河边天桥下，旧箱子里，熟悉的眼眸，轮回一般，白色小猫撞进了她的视线。“一起回家吧”，它成为了她的猫。<br></p><p><img src=\"/upload/201810/hercat2.jpg\"></p><p>动画全篇以猫的一生视角讲述了女主的生活。以小清新的画风描绘了一个略带伤感的故事，但开放的结尾仍留了一丝温暖，也许岁月并没有那么多安好，抛开鸡汤回归原本的生活，你珍惜的 TA 也在珍惜着你吗？<br></p><p><br></p><blockquote><p>原作动画官方 - http://shinkaimakoto.jp/hercat<br></p><p>TV 动画官网 - http://kanoneko.com<br></p></blockquote><p><br></p>');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `t_tips`
---
-
-CREATE TABLE `t_tips` (
-  `id` int(11) NOT NULL,
-  `title` varchar(60) NOT NULL DEFAULT '',
-  `intro` varchar(400) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(19, 19, '<p>《她和她的猫》（日语：彼女と彼女の猫）原本是由新海诚自主制作的 5 分钟黑白动画。<br></p><p><b>TV 动画</b><br></p><p>2016 Lidenfilms 将原动画重新制作，内容相当于原黑白动画之前的故事。并于 2016 年 3 月 4 日 ~ 25 日在 TOKYO MX 等媒体播送，每话时长约 8 分钟，全 4 话。</p><p><img src=\"/upload/201810/hercat.jpg\"></p><p data-role=\"danger\">以下内容含有剧透成分</p><p>她一直很孤单，从小失去父亲，为了不给母亲添麻烦选择了出去租住。合租室友突然搬走，她开始一个人生活。每个清晨独自走出家门，独自上学，独自放学，独自在公园的秋千上发呆。街道上三五成群的小孩追逐嬉戏，伴着笑声穿过她身旁，一切似乎与她无关。<br></p><p><img src=\"/upload/201810/hercat3.jpg\"></p><p>它是一只黑色的小流浪猫，被她的母亲领养回家，送给她。最初她并不喜欢它，甚至想把它丢弃，但最后没能狠下心。由于它，她也交到了朋友。它很喜欢她，熟悉她的味道，喜欢依偎在她身旁睡觉，它会用自己的方式为她加油鼓气，但往往弄巧成拙。<br></p><p>时间流逝，它变成了大猫，她也毕业开始寻找工作，虽然尽力争取每一个岗位，但一切并不如意，四处碰壁的失落感，只能化为夜深人静中孤单无助的抽泣，它是她唯一的陪伴和慰藉。<br></p><p>光阴荏苒，成为猫爷爷的它在她怀里去世了。她又变得孤单一人，夜深人静的晚上会梦到它而惊醒。它虽然去世了，但仍留有她的记忆，依然熟悉她的味道。<br></p><p><img src=\"/upload/201810/hercat4.jpg\"></p><p>雨天的河边天桥下，旧箱子里，熟悉的眼眸，轮回一般，白色小猫撞进了她的视线。“一起回家吧”，它成为了她的猫。<br></p><p><img src=\"/upload/201810/hercat2.jpg\"></p><p>动画全篇以猫的一生视角讲述了女主的生活。以小清新的画风描绘了一个略带伤感的故事，但开放的结尾仍留了一丝温暖，也许岁月并没有那么多安好，抛开鸡汤回归原本的生活，你珍惜的 TA 也在珍惜着你吗？<br></p><p><br></p><blockquote><p>原作动画官方 - http://shinkaimakoto.jp/hercat<br></p><p>TV 动画官网 - http://kanoneko.com<br></p></blockquote><p><br></p>'),
+(20, 20, '<p>《齐木楠雄的灾难》（日语：斉木楠雄のΨ難）是由麻生周一创作的一部漫画，并有动画、真人版电影等衍生作品。<br></p><p>齐木楠雄，本作的主角，是一个超能力者。生来就拥有着让世人羡慕的超能力才能，但是他本人认为这种可以做到任何事情的能力是个灾难，是引来不幸的元凶。齐木楠雄羡慕正常人的生活，因此会在他人面前隐藏这股力量，打算过着不起眼、不与人有所牵扯的生活。但不知道为什么，某些有隐情的同学就是会跑来纠缠他。<br></p><p><b>动画版衍生作品</b><br></p><p>2016 年 5 月宣布动画化。先行短篇版于 2016 年 7 月 4 日起每周一至周五在综艺节目《おはスタ》进行 5 话播放。 24 分钟周播版于 2016 年 7 月 11 日起每周一播出。动画第二季于 2018 年 1 月 16 日起每周二播出。<br></p><p>这部作品可以说是非常搞笑了，可以看做吐槽类的搞笑日常番，相比于其他一些生硬的吐槽类番剧，本作在各个主配角丰富的 2b 日常生活的烘托下多了那么几分厚重感。<br></p><p>既然是吐槽类日常番，那这里也换一种方式介绍下。<br></p><p>首先说下主角齐木楠雄，主角给人的最大印象就是头上的两个游戏摇杆状的东西，这也很符合番剧的剧情 - 闹着玩一样。还有主角说话从来不张嘴，从来都分不清主角是在和他人对话还是精分现场。主角认为自己是不幸的，这怕是最想让人拥有的不幸了。<br></p><p><img src=\"/upload/201811/qimunanxiong.jpg\"></p><p>女主角照桥心美，一个出场自带背景音乐的女人，这让我想到了《蜡笔小新》里面的松坂梅，只要出现所有人必为之倾倒，瞬间被围堵。有吸引力也就算了，为什么这个女人身边还萦绕着金色的光晕，难道这。。。真主角光环？<br></p><p><img src=\"/upload/201811/zhaoqiaoxinmei.jpg\"></p><p><em>这里想起诸葛亮大战王司徒时的台词 - 从未见过如此厚颜无耻之人</em></p><p>燃堂力，一个容貌设计颇具有特色的角色，官方吐槽定义为其下巴和屁股一样，既然自己都知道，那还设计成这样，难道作者。。。<br></p><p><img src=\"/upload/201811/rantangli.jpg\"></p><p>鸟束零太，灵能力者，能看到幽灵，常利用这个能力干一些不可描述的事。<br></p><p><img src=\"/upload/201811/niaoshulingtai.jpg\"></p><p>海藤瞬，齐木楠雄的同学，重度中二病患者，怀疑患有严重精神分裂症。<br></p><p><img src=\"/upload/201811/haitengshun.jpg\"></p><p>灰吕杵志，班长，一个热血青年，常常不注意露出自己的屁股，看来屁股在本番中有着重要意义。<br></p><p><img src=\"/upload/201811/huilvchuzhi.jpg\"></p><p>梦原知予，齐木楠雄的同学，普通人一个。<br></p><p>目良千里，齐木楠雄的同学，野人般的存在，超能吃。<br></p><p>漥谷须亚莲，齐木楠雄的同学，从他身上可以证明浪子确实可以回头。<br></p><p>才虎芽斗吏，齐木楠雄的同学，富二代，喜欢用钱解决一切问题，嗯，我也喜欢 ---- 有这种朋友。<br></p><p>梨步田依舞，齐木楠雄的后辈，可爱的双马尾少女，马尾败给了照桥心美，怕不是有人要给作者寄刀片。<br></p><p>齐木国春和齐木久留美，主角的父母，不得不说两个人很大条了。主角的异常非但没有让二位感到困惑，反而乐在其中，可以说这是一个诡异的家庭。<br></p><p><img src=\"/upload/201811/nanxiongfumu.jpg\"></p><p>齐木熊五郎，齐木楠雄的外公，百分百的傲娇分子，心理活动十分丰富，表面却装的风平浪静，你这么分裂，是不是拿了两份工资。。。<br></p><p>齐木久美，齐木楠雄的外婆，只记住了齐木空助使其变年轻的画面，漂亮极了，哎，男人。。。</p><p>齐木空助，主角的哥哥，被称为天才，但天才从小被主角碾压，甚至出逃国外，作者是不是被刺激过，设计这个桥段。<br></p><p><img src=\"/upload/201811/qimukongzhu.jpg\"></p><blockquote><p>动画官网 - http://www.saikikusuo.com</p></blockquote><p><br></p>');
 
 --
 -- 转存表中的数据 `t_tips`
@@ -243,26 +125,6 @@ INSERT INTO `t_tips` (`id`, `title`, `intro`) VALUES
 (12, 'AbemaTV', 'AbemaTV 是一个面向 PC 和智能手机的实时流媒体互联网电视。它由 AbemaTV 有限公司运营，该公司由网络代理商和朝日电视台共同出资'),
 (13, '富士见书房', '富士见书房是日本的的出版商，角川集团品牌之一');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `t_topic`
---
-
-CREATE TABLE `t_topic` (
-  `id` int(11) NOT NULL,
-  `uid` int(11) DEFAULT '0' COMMENT '用户id',
-  `topic_cate_id` int(11) DEFAULT '0' COMMENT '帖子分类id',
-  `title` varchar(60) CHARACTER SET utf8 DEFAULT '',
-  `brief` varchar(200) CHARACTER SET utf8 DEFAULT '',
-  `ip` varchar(60) CHARACTER SET utf8 DEFAULT '',
-  `essence` tinyint(4) DEFAULT '0' COMMENT '精华',
-  `praise` int(11) DEFAULT '0' COMMENT '赞',
-  `status` tinyint(4) DEFAULT '1',
-  `comment_number` int(11) DEFAULT '0' COMMENT '评论数',
-  `post_time` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- 转存表中的数据 `t_topic`
 --
@@ -273,21 +135,6 @@ INSERT INTO `t_topic` (`id`, `uid`, `topic_cate_id`, `title`, `brief`, `ip`, `es
 (3, 1, 1, '缘之空 下载', '', '36.98.35.72', 0, 0, 1, 0, 1538627792),
 (4, 1, 3, '《约会大作战》狂三睡衣手办 2019 年即将开售', '', '36.98.35.72', 0, 0, 1, 0, 1538628617);
 
--- --------------------------------------------------------
-
---
--- 表的结构 `t_topic_category`
---
-
-CREATE TABLE `t_topic_category` (
-  `id` int(11) NOT NULL,
-  `title` varchar(40) CHARACTER SET utf8 DEFAULT '',
-  `brief` varchar(100) CHARACTER SET utf8 DEFAULT '' COMMENT '描述',
-  `thumb` varchar(200) CHARACTER SET utf8 DEFAULT '' COMMENT '话题图标',
-  `is_recommand` tinyint(4) DEFAULT '0' COMMENT '是否推荐',
-  `post_time` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- 转存表中的数据 `t_topic_category`
 --
@@ -296,18 +143,6 @@ INSERT INTO `t_topic_category` (`id`, `title`, `brief`, `thumb`, `is_recommand`,
 (1, '分享', '', '/dist/m/images/item-article.jpg', 0, 0),
 (2, '求助', '', '/dist/m/images/item-article.jpg', 0, 0),
 (3, '杂谈', '', '/dist/m/images/item-user.jpg', 0, 0);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `t_topic_content`
---
-
-CREATE TABLE `t_topic_content` (
-  `id` int(11) NOT NULL,
-  `topic_id` int(11) NOT NULL DEFAULT '0',
-  `content` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 转存表中的数据 `t_topic_content`
@@ -319,43 +154,6 @@ INSERT INTO `t_topic_content` (`id`, `topic_id`, `content`) VALUES
 (3, 3, '简体中文种子\nhttps://dl.dmhy.org/2016/01/05/4c7c3f28c0497fd977e625e59038af3b9c9a0025.torrent\n繁体中文\nhttps://dl.dmhy.org/2016/07/10/8a175e718760ab5291b6e1e8b54eb8dede0edeaa.torrent\n[img src=\"http://pic.xiaomingming.org/FileUpload/3964.jpg\"]'),
 (4, 4, 'Alphamax 制作《约会大作战》狂三睡衣手办正式开订，售价 13,800 日元（ 855 元），预计 2019 年 5 月发售\n[img src=\"https://wx4.sinaimg.cn/orj360/006tTwHFgy1fvtxsnw91jj30et0m8qk2.jpg\"]\n[img src=\"https://wx2.sinaimg.cn/orj360/006tTwHFgy1fvtxtt1msfj30xc1dtnpe.jpg\"]\n[img src=\"https://wx2.sinaimg.cn/orj360/006tTwHFgy1fvtxrzkaf2j30p011inpd.jpg\"]\n[img src=\"https://wx2.sinaimg.cn/orj360/006tTwHFgy1fvtxt3ysoqj30et0m8k9b.jpg\"]\n[img src=\"https://wx1.sinaimg.cn/orj360/006tTwHFgy1fvtxscllwwj30et0m8qev.jpg\"]\n[img src=\"https://wx2.sinaimg.cn/orj360/006tTwHFgy1fvtxshaoihj30et0m84ej.jpg\"]');
 
--- --------------------------------------------------------
-
---
--- 表的结构 `t_topic_reply`
---
-
-CREATE TABLE `t_topic_reply` (
-  `id` int(11) NOT NULL,
-  `pid` int(11) NOT NULL DEFAULT '0',
-  `topic_id` int(11) NOT NULL DEFAULT '0' COMMENT '评论那篇话题',
-  `uid` int(11) NOT NULL DEFAULT '0',
-  `content` varchar(200) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `floor` int(11) NOT NULL DEFAULT '0' COMMENT '楼层',
-  `status` tinyint(4) NOT NULL DEFAULT '1',
-  `post_time` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `t_user`
---
-
-CREATE TABLE `t_user` (
-  `id` int(11) NOT NULL,
-  `gender` tinyint(4) DEFAULT '1' COMMENT '0女 1男 2保密',
-  `username` varchar(60) CHARACTER SET utf8 DEFAULT '',
-  `password` char(32) CHARACTER SET utf8 DEFAULT '',
-  `email` varchar(100) CHARACTER SET utf8 DEFAULT '',
-  `avatar` varchar(200) CHARACTER SET utf8 DEFAULT '',
-  `truename` varchar(60) CHARACTER SET utf8 DEFAULT '',
-  `phone` varchar(60) CHARACTER SET utf8 DEFAULT '',
-  `shortintro` varchar(200) CHARACTER SET utf8 DEFAULT '',
-  `regtime` int(11) DEFAULT '0',
-  `status` tinyint(4) DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='会员表';
-
 --
 -- 转存表中的数据 `t_user`
 --
@@ -363,37 +161,12 @@ CREATE TABLE `t_user` (
 INSERT INTO `t_user` (`id`, `gender`, `username`, `password`, `email`, `avatar`, `truename`, `phone`, `shortintro`, `regtime`, `status`) VALUES
 (1, 1, '小白', '200820e3227815ed1756a6b531e7e0d2', 'xiaobai@gmail.com', '', '', '', '', 1537004001, 1);
 
--- --------------------------------------------------------
-
---
--- 表的结构 `t_user_credit`
---
-
-CREATE TABLE `t_user_credit` (
-  `uid` int(11) DEFAULT '0',
-  `score` double DEFAULT '0',
-  `experience` double DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户积分表';
-
 --
 -- 转存表中的数据 `t_user_credit`
 --
 
 INSERT INTO `t_user_credit` (`uid`, `score`, `experience`) VALUES
 (1, 120, 107);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `t_user_level`
---
-
-CREATE TABLE `t_user_level` (
-  `levelname` varchar(20) CHARACTER SET utf8 DEFAULT '',
-  `minscore` int(11) DEFAULT '0',
-  `maxscore` int(11) DEFAULT '0',
-  `levelnum` int(11) DEFAULT '1' COMMENT '等级编号'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户等级表';
 
 --
 -- 转存表中的数据 `t_user_level`
@@ -416,176 +189,6 @@ INSERT INTO `t_user_level` (`levelname`, `minscore`, `maxscore`, `levelnum`) VAL
 ('榜眼', 221, 270, 14),
 ('状元', 271, 320, 15),
 ('大神', 321, 1000, 16);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `t_ad`
---
-ALTER TABLE `t_ad`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `t_admin`
---
-ALTER TABLE `t_admin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `t_links`
---
-ALTER TABLE `t_links`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `t_nav`
---
-ALTER TABLE `t_nav`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `t_post`
---
-ALTER TABLE `t_post`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `t_post_comment`
---
-ALTER TABLE `t_post_comment`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `t_post_content`
---
-ALTER TABLE `t_post_content`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `t_tips`
---
-ALTER TABLE `t_tips`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `t_topic`
---
-ALTER TABLE `t_topic`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `t_topic_category`
---
-ALTER TABLE `t_topic_category`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `t_topic_content`
---
-ALTER TABLE `t_topic_content`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `t_topic_reply`
---
-ALTER TABLE `t_topic_reply`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `t_user`
---
-ALTER TABLE `t_user`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `t_user_credit`
---
-ALTER TABLE `t_user_credit`
-  ADD UNIQUE KEY `userid` (`uid`);
-
---
--- 在导出的表使用AUTO_INCREMENT
---
-
---
--- 使用表AUTO_INCREMENT `t_ad`
---
-ALTER TABLE `t_ad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- 使用表AUTO_INCREMENT `t_admin`
---
-ALTER TABLE `t_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- 使用表AUTO_INCREMENT `t_links`
---
-ALTER TABLE `t_links`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `t_nav`
---
-ALTER TABLE `t_nav`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- 使用表AUTO_INCREMENT `t_post`
---
-ALTER TABLE `t_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- 使用表AUTO_INCREMENT `t_post_comment`
---
-ALTER TABLE `t_post_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- 使用表AUTO_INCREMENT `t_post_content`
---
-ALTER TABLE `t_post_content`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- 使用表AUTO_INCREMENT `t_tips`
---
-ALTER TABLE `t_tips`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- 使用表AUTO_INCREMENT `t_topic`
---
-ALTER TABLE `t_topic`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- 使用表AUTO_INCREMENT `t_topic_category`
---
-ALTER TABLE `t_topic_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- 使用表AUTO_INCREMENT `t_topic_content`
---
-ALTER TABLE `t_topic_content`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- 使用表AUTO_INCREMENT `t_topic_reply`
---
-ALTER TABLE `t_topic_reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- 使用表AUTO_INCREMENT `t_user`
---
-ALTER TABLE `t_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
