@@ -23,7 +23,7 @@ CREATE TABLE `t_ad` (
   `expires` int(11) DEFAULT '0' COMMENT '过期时间',
   `post_time` int(11) DEFAULT '0' COMMENT '发布时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*Table structure for table `t_admin` */
 
@@ -34,7 +34,7 @@ CREATE TABLE `t_admin` (
   `name` varchar(20) DEFAULT '',
   `pwd` char(32) DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*Table structure for table `t_imgs` */
 
@@ -51,7 +51,7 @@ CREATE TABLE `t_imgs` (
   `views` int(11) NOT NULL DEFAULT '1',
   `post_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*Table structure for table `t_links` */
 
@@ -63,7 +63,7 @@ CREATE TABLE `t_links` (
   `link` varchar(100) NOT NULL DEFAULT '',
   `add_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*Table structure for table `t_nav` */
 
@@ -78,7 +78,7 @@ CREATE TABLE `t_nav` (
   `listorder` int(11) NOT NULL DEFAULT '0',
   `linktype` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1 本站链接 2 站外链接',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*Table structure for table `t_post` */
 
@@ -98,7 +98,7 @@ CREATE TABLE `t_post` (
   `views` int(11) DEFAULT '1',
   `post_time` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Table structure for table `t_post_comment` */
 
@@ -116,7 +116,7 @@ CREATE TABLE `t_post_comment` (
   `client_type` tinyint(4) DEFAULT '0',
   `post_time` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Table structure for table `t_post_content` */
 
@@ -127,7 +127,7 @@ CREATE TABLE `t_post_content` (
   `post_id` int(11) DEFAULT '0',
   `content` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Table structure for table `t_tips` */
 
@@ -138,7 +138,7 @@ CREATE TABLE `t_tips` (
   `title` varchar(60) NOT NULL DEFAULT '',
   `intro` varchar(400) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*Table structure for table `t_topic` */
 
@@ -157,7 +157,7 @@ CREATE TABLE `t_topic` (
   `comment_number` int(11) DEFAULT '0' COMMENT '评论数',
   `post_time` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Table structure for table `t_topic_category` */
 
@@ -171,7 +171,7 @@ CREATE TABLE `t_topic_category` (
   `is_recommand` tinyint(4) DEFAULT '0' COMMENT '是否推荐',
   `post_time` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Table structure for table `t_topic_content` */
 
@@ -182,7 +182,7 @@ CREATE TABLE `t_topic_content` (
   `topic_id` int(11) NOT NULL DEFAULT '0',
   `content` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Table structure for table `t_topic_reply` */
 
@@ -198,7 +198,7 @@ CREATE TABLE `t_topic_reply` (
   `status` tinyint(4) NOT NULL DEFAULT '1',
   `post_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Table structure for table `t_user` */
 
@@ -217,7 +217,7 @@ CREATE TABLE `t_user` (
   `regtime` int(11) DEFAULT '0',
   `status` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='会员表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='会员表';
 
 /*Table structure for table `t_user_credit` */
 
@@ -228,7 +228,7 @@ CREATE TABLE `t_user_credit` (
   `score` double DEFAULT '0',
   `experience` double DEFAULT '0',
   UNIQUE KEY `userid` (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户积分表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='用户积分表';
 
 /*Table structure for table `t_user_level` */
 
@@ -239,7 +239,7 @@ CREATE TABLE `t_user_level` (
   `minscore` int(11) DEFAULT '0',
   `maxscore` int(11) DEFAULT '0',
   `levelnum` int(11) DEFAULT '1' COMMENT '等级编号'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户等级表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='用户等级表';
 
 /*Table structure for table `t_vod` */
 
@@ -257,7 +257,7 @@ CREATE TABLE `t_vod` (
   `vod_posttime` int(11) DEFAULT '0',
   `vod_updatetime` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*Table structure for table `t_vod_detail` */
 
@@ -269,7 +269,7 @@ CREATE TABLE `t_vod_detail` (
   `vod_brief` text COMMENT '简介',
   `vod_url` text COMMENT '视频地址',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
