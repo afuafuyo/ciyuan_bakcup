@@ -256,6 +256,7 @@ CREATE TABLE `t_vod` (
   `vod_pic` varchar(200) DEFAULT '' COMMENT '图片地址',
   `vod_posttime` int(11) DEFAULT '0',
   `vod_updatetime` int(11) DEFAULT '0',
+  `status` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
