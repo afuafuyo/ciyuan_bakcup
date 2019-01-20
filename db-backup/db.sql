@@ -248,6 +248,7 @@ DROP TABLE IF EXISTS `t_vod`;
 CREATE TABLE `t_vod` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `vod_cate_id` int(11) DEFAULT '0',
+  `vod_year` int(11) DEFAULT '0',
   `vod_name` varchar(100) DEFAULT '',
   `vod_area` varchar(20) DEFAULT '',
   `vod_tags` varchar(60) DEFAULT '',
