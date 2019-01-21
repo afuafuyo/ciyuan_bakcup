@@ -273,6 +273,23 @@ CREATE TABLE `t_vod_detail` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+
+DROP TABLE IF EXISTS `t_comment_center`;
+CREATE TABLE `t_comment_center` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project_id` smallint(6) NOT NULL DEFAULT '0' COMMENT '项目编号 1 视频',
+  `client_type` smallint(6) NOT NULL DEFAULT '0',
+  `project_inner_id` int(11) NOT NULL DEFAULT '0' COMMENT '项目内编号 比如文章的编号',
+  `parent_id` int(11) NOT NULL DEFAULT '0' COMMENT '父评论编号',
+  `uid` int(11) NOT NULL DEFAULT '0',
+  `praise` int(11) NOT NULL DEFAULT '0',
+  `post_time` int(11) NOT NULL DEFAULT '0',
+  `ip` varchar(40) NOT NULL DEFAULT '',
+  `content` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
