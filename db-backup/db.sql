@@ -279,6 +279,7 @@ CREATE TABLE `t_comment_center` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `project_id` smallint(6) NOT NULL DEFAULT '0' COMMENT '项目编号 1 视频',
   `client_type` smallint(6) NOT NULL DEFAULT '0',
+  `status` tinyint(4) NOT NULL DEFAULT '1',
   `project_inner_id` int(11) NOT NULL DEFAULT '0' COMMENT '项目内编号 比如文章的编号',
   `parent_id` int(11) NOT NULL DEFAULT '0' COMMENT '父评论编号',
   `uid` int(11) NOT NULL DEFAULT '0',
