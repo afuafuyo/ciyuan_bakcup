@@ -285,6 +285,7 @@ CREATE TABLE `t_comment_center` (
   `uid` int(11) NOT NULL DEFAULT '0',
   `praise` int(11) NOT NULL DEFAULT '0',
   `post_time` int(11) NOT NULL DEFAULT '0',
+  `nick` varchar(60) NOT NULL DEFAULT '',
   `ip` varchar(40) NOT NULL DEFAULT '',
   `content` text,
   PRIMARY KEY (`id`)
