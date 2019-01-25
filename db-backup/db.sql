@@ -250,6 +250,7 @@ CREATE TABLE `t_vod` (
   `vod_cate_id` int(11) DEFAULT '0',
   `vod_year` int(11) DEFAULT '0',
   `vod_name` varchar(100) DEFAULT '',
+  `vod_tip` varchar(50) DEFAULT '',
   `vod_area` varchar(20) DEFAULT '',
   `vod_tags` varchar(60) DEFAULT '',
   `vod_actor` varchar(100) DEFAULT '' COMMENT '演员',
