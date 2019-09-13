@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -9,11 +9,9 @@
 
 </head>
 <body>
-<div class="y-nav">
-    <div class="y-wrapper y-nav-wrapper">
-        <div class="y-nav-left">
-            <a href="/">首页</a>
-        </div>
+<div class="x-nav-wrapper">
+    <div class="x-wrapper ">
+        <a href="/">首页</a>
     </div>
 </div>
 <div class="notfound-bg">
@@ -27,8 +25,8 @@
 function setBg() {
     var now = new Date().getHours();
     var body = document.body;
-    var nav = document.querySelector('.y-nav');
-    console.log(now)
+    var nav = document.querySelector('.x-nav-wrapper');
+    
     if(now > 8 && now < 16) {
         body.style.backgroundImage = 'linear-gradient(180deg, #0d68bc, #89b5de 40%, #fff 70%)';
         nav.style.backgroundImage = 'linear-gradient(90deg, #fff, #0d68bc)';
