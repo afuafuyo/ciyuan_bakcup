@@ -6,6 +6,11 @@ define('FATE_DEBUG', true);
 define('RES', 'http://localhost/fateblog-share/web/dist');
 
 $_G = [];
+$_G['sys'] = [
+    'openreg' => 1,
+    'exponpost' => 3,
+    'openreview' => 0
+];
 $_G['seo'] = [
     'sitetitle' => '番薯社 - (F) - 二次元图鉴',
     'navtitle' => '番薯社',
@@ -15,12 +20,8 @@ $_G['seo'] = [
     'author' => '番薯社',
     'copyright' => '番薯社'
 ];
-$_G['footer'] = [
-    'rss' => '531251662',
-    'about' => '<p>本站为非盈利个人博客，不提供任何上传下载服务，所有内容均来自网络公开分享或网友的投稿。</p><p>如果您发现本站某些文章资源或图片违规或侵犯了您的权益，请发送消息到下面邮箱</p><p>531251662#qq.com</p>'
-];
-$_G['nowTime'] = isset($_SERVER['REQUEST_TIME']) ? $_SERVER['REQUEST_TIME'] : time();
-$_G['theme'] = 'y-theme-afternoon';
+$_G['footer'] = '<p>本站为非盈利个人博客，不提供任何上传下载服务，所有内容均来自网络公开分享或网友的投稿。</p><p>如果您发现本站某些文章资源或图片违规或侵犯了您的权益，请发送消息到下面邮箱</p><p>531251662#qq.com</p>';
+$_G['now_time'] = isset($_SERVER['REQUEST_TIME']) ? $_SERVER['REQUEST_TIME'] : time();
 
 require(__DIR__ . '/../../fateblog-share/vendor/afuafuyo/fatephp/Fate.php');
 require(__DIR__ . '/../../fateblog-share/vendor/autoload.php');
@@ -38,22 +39,15 @@ $res = (new fate\web\Application([
     //'errorHandler' => 'app\controllers\ErrorPage',
     'routesMap' => [
         'anime' => [
-            'classPath' => 'app\controllers\classify\IndexController',
+            'classPath' => 'app\controllers\category\IndexController',
             'navid' => 1
         ],
         'game' => [
-            'classPath' => 'app\controllers\classify\IndexController',
-            'navid' => 2
-        ],
-        'around' => [
-            'classPath' => 'app\controllers\classify\IndexController',
-            'navid' => 3
+            'classPath' => 'app\controllers\category\IndexController',
+            'navid' => 8
         ]
     ],
-    'modules' => [
-        'admin' => 'app\\modules\\admin',
-        'bbs' => 'app\\modules\\bbs'
-    ],
+    'modules' => [],
     'db' => [
         'main' => [
             'dsn' => 'mysql:host=localhost;dbname=fateblog',
